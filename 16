@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_SIZE 100
+
+int main() {
+    char str[MAX_SIZE];
+    int freq[256] = {0};
+    int maxFreq = -1;
+    char maxChar;
+
+    printf("Enter a string: ");
+    fgets(str, MAX_SIZE, stdin);
+
+    // Find the frequency of each character in the string
+    for (int i = 0; str[i] != '\0'; i++) {
+        freq[str[i]]++;
+    }
+
+    // Find the maximum occurring character in the string
+    for (int i = 0; i < 256; i++) {
+        if (freq[i] > maxFreq) {
+            maxFreq = freq[i];
+            maxChar = i;
+        }
+    }
+
+    printf("The maximum occurring character in the string is '%c' with frequency %d.\n", maxChar, maxFreq);
+
+    return 0;
+}
