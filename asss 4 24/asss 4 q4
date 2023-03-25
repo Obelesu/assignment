@@ -1,0 +1,34 @@
+def printEvenOrOdd(lower, upper, isEven=True):
+    if lower > upper:
+        return
+    if (lower % 2 == 0) == isEven:
+        print(lower, end=' ')
+    printEvenOrOdd(lower+1, upper, isEven)
+
+lower = int(input("Enter lower limit: "))
+upper = int(input("Enter upper limit: "))
+
+print("Even/odd Numbers from", lower, "to", upper, "are:", end=' ')
+if lower % 2 == 0:
+    printEvenOrOdd(lower, upper, True)
+    print()
+    print("Odd numbers from", lower, "to", upper, "are:", end=' ')
+    printEvenOrOdd(lower, upper, False)
+else:
+    printEvenOrOdd(lower, upper, False)
+    print()
+    print("Even numbers from", lower, "to", upper, "are:", end=' ')
+    printEvenOrOdd(lower, upper, True)
+output
+Enter lower limit: 1
+Enter upper limit: 10
+Even/odd Numbers from 1 to 10 are: 1 3 5 7 9
+Odd numbers from 1 to 10 are: 1 3 5 7 9
+
+Enter lower limit: 2
+Enter upper limit: 10
+Even/odd Numbers from 2 to 10 are: 2 4 6 8 10
+Odd numbers from 2 to 10 are: 3 5 7 9
+
+
+
