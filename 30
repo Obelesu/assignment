@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+#define ROWS 3
+#define COLS 3
+
+void matrix_mult(int *a, int *b, int *result) {
+    int i, j, k;
+
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            *(result + i * COLS + j) = 0;
+            for (k = 0; k < COLS; k++) {
+                *(result + i * COLS + j) += *(a + i * COLS + k) * *(b + k * COLS + j);
+            }
+        }
+    }
+}
+
+void display_matrix(int *m) {
+    int i, j;
+
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            printf("%d ", *(m + i * COLS + j));
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int a[ROWS][COLS], b[ROWS][COLS], result[ROWS][COLS];
+    int i, j;
+
+    printf("Enter elements in first matrix of size %dx%d\n", ROWS, COLS);
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            scanf("%d", (*(a + i) + j));
+        }
+    }
+
+    printf("Enter elements in second matrix of size %dx%d\n", ROWS, COLS);
+    for (i = 0; i < ROWS; i++) {
+        for (j = 0; j < COLS; j++) {
+            scanf("%d", (*(b + i) + j));
+        }
+    }
+
+    matrix_mult((int *)a, (int *)b, (int *)result);
+
+    printf("\nProduct of both matrices is :\n");
+    display_matrix((int *)result);
+
+    return 0;
+}
+output:
+Enter elements in first matrix of size 3x3
+10 20 30
+40 50 60
+70 80 90
+Enter elements in second matrix of size 3x3
+1 2 3
+4 5 6
+7 8 9
+
+Product of both matrices is :
+300 360 420
+660 810 960
+1020 1260 1500
